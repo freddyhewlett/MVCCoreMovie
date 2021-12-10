@@ -1,0 +1,12 @@
+D:\Workplace\MVCCoreMovie\Domain\Domain\bin\Debug\net5.0\Domain.deps.json
+D:\Workplace\MVCCoreMovie\Domain\Domain\bin\Debug\net5.0\Domain.dll
+D:\Workplace\MVCCoreMovie\Domain\Domain\bin\Debug\net5.0\ref\Domain.dll
+D:\Workplace\MVCCoreMovie\Domain\Domain\bin\Debug\net5.0\Domain.pdb
+D:\Workplace\MVCCoreMovie\Domain\Domain\obj\Debug\net5.0\Domain.csproj.AssemblyReference.cache
+D:\Workplace\MVCCoreMovie\Domain\Domain\obj\Debug\net5.0\Domain.GeneratedMSBuildEditorConfig.editorconfig
+D:\Workplace\MVCCoreMovie\Domain\Domain\obj\Debug\net5.0\Domain.AssemblyInfoInputs.cache
+D:\Workplace\MVCCoreMovie\Domain\Domain\obj\Debug\net5.0\Domain.AssemblyInfo.cs
+D:\Workplace\MVCCoreMovie\Domain\Domain\obj\Debug\net5.0\Domain.csproj.CoreCompileInputs.cache
+D:\Workplace\MVCCoreMovie\Domain\Domain\obj\Debug\net5.0\Domain.dll
+D:\Workplace\MVCCoreMovie\Domain\Domain\obj\Debug\net5.0\ref\Domain.dll
+D:\Workplace\MVCCoreMovie\Domain\Domain\obj\Debug\net5.0\Domain.pdb
