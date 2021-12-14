@@ -2011,6 +2011,19 @@
           "lib/netstandard1.3/System.Xml.XmlSerializer.dll": {}
         }
       },
+      "Application/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v5.0",
+        "dependencies": {
+          "Domain": "1.0.0"
+        },
+        "compile": {
+          "bin/placeholder/Application.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/Application.dll": {}
+        }
+      },
       "Domain/1.0.0": {
         "type": "project",
         "framework": ".NETCoreApp,Version=v5.0",
@@ -7149,6 +7162,11 @@
         "system.xml.xmlserializer.nuspec"
       ]
     },
+    "Application/1.0.0": {
+      "type": "project",
+      "path": "../../Application/Application/Application.csproj",
+      "msbuildProject": "../../Application/Application/Application.csproj"
+    },
     "Domain/1.0.0": {
       "type": "project",
       "path": "../../Domain/Domain/Domain.csproj",
@@ -7157,6 +7175,7 @@
   },
   "projectFileDependencyGroups": {
     "net5.0": [
+      "Application >= 1.0.0",
       "Domain >= 1.0.0",
       "Microsoft.EntityFrameworkCore >= 5.0.12",
       "Microsoft.EntityFrameworkCore.Design >= 5.0.12",
@@ -7197,6 +7216,9 @@
         "net5.0": {
           "targetAlias": "net5.0",
           "projectReferences": {
+            "D:\\Workplace\\MVCCoreMovie\\Application\\Application\\Application.csproj": {
+              "projectPath": "D:\\Workplace\\MVCCoreMovie\\Application\\Application\\Application.csproj"
+            },
             "D:\\Workplace\\MVCCoreMovie\\Domain\\Domain\\Domain.csproj": {
               "projectPath": "D:\\Workplace\\MVCCoreMovie\\Domain\\Domain\\Domain.csproj"
             }

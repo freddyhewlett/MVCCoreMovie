@@ -14,6 +14,9 @@ EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Domain", "Domain\Domain\Domain.csproj", "{B15D04F1-93FD-4B90-94BA-DE3B2894FC02}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Infrastructure", "Infrastructure\Infrastructure\Infrastructure.csproj", "{455FB7E2-85C6-4A87-A055-A47B96C167B1}"
+	ProjectSection(ProjectDependencies) = postProject
+		{B8E17829-AFA2-4970-9CA5-1E70F13AF2E0} = {B8E17829-AFA2-4970-9CA5-1E70F13AF2E0}
+	EndProjectSection
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WebUI", "WebUI\WebUI.csproj", "{71CEF1F5-3CD8-4B15-B762-6748A443F4CB}"
 EndProject

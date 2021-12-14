@@ -107,7 +107,7 @@ namespace Infrastructure.Migrations
                         new
                         {
                             GenreID = 12,
-                            Description = "tories in the Western genre are set in the American West, between the time of the Civil war and the early nineteenth century.",
+                            Description = "Stories in the Western genre are set in the American West, between the time of the Civil war and the early nineteenth century.",
                             Name = "Western"
                         },
                         new

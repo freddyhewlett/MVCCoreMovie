@@ -79,7 +79,7 @@ namespace Infrastructure.Migrations
                     { 9, "Romance novels are emotion-driven stories that are primarily focused on the relationship between the main characters of the story.", "Romance" },
                     { 10, "A fantasy story is about magic or supernatural forces, rather than technology, though it often is made to include elements of other genres, such as science fiction elements, for instance computers or DNA, if it happens to take place in a modern or future era. ", "Fantasy" },
                     { 11, "The coverage of sports as a television program, on radio and other broadcasting media. It usually involves one or more sports commentators describing the events as they happen, which is called colour commentary.", "Sport" },
-                    { 12, "tories in the Western genre are set in the American West, between the time of the Civil war and the early nineteenth century.", "Western" },
+                    { 12, "Stories in the Western genre are set in the American West, between the time of the Civil war and the early nineteenth century.", "Western" },
                     { 13, "A Thriller is a story that is usually a mix of fear and excitement. It has traits from the suspense genre and often from the action, adventure or mystery genres, but the level of terror makes it borderline horror fiction at times as well. ", "Thriller" },
                     { 14, "The family saga is a genre of literature which chronicles the lives and doings of a family or a number of related or interconnected families over a period of time. ", "Family" }
                 });

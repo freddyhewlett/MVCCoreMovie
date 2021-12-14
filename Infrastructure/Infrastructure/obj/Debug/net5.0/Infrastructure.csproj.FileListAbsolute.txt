@@ -16,3 +16,5 @@ D:\Workplace\MVCCoreMovie\Infrastructure\Infrastructure\obj\Debug\net5.0\Infrast
 D:\Workplace\MVCCoreMovie\Infrastructure\Infrastructure\obj\Debug\net5.0\ref\Infrastructure.dll
 D:\Workplace\MVCCoreMovie\Infrastructure\Infrastructure\obj\Debug\net5.0\Infrastructure.pdb
 D:\Workplace\MVCCoreMovie\Infrastructure\Infrastructure\obj\Debug\net5.0\Infrastructure.genruntimeconfig.cache
+D:\Workplace\MVCCoreMovie\Infrastructure\Infrastructure\bin\Debug\net5.0\Application.dll
+D:\Workplace\MVCCoreMovie\Infrastructure\Infrastructure\bin\Debug\net5.0\Application.pdb

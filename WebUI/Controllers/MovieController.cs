@@ -8,6 +8,7 @@ using Microsoft.EntityFrameworkCore;
 using Domain.Models;
 using Infrastructure.Data;
 using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Authorization;
 
 namespace WebUI.Controllers
 {
@@ -193,12 +194,13 @@ namespace WebUI.Controllers
             return View(genreModel);
         }
 
-
-        public async Task<IViewComponentResult> GenreMenu(int num = 5)
+        [HttpGet]
+        [AllowAnonymous]
+        public async Task<IActionResult> GenreMenu(int num = 5)
         {
             var genres = await _context.Genres.OrderByDescending(g => g.Movies.Count).Take(num).ToListAsync();
 
-            //return this.ViewComponent(genres);
+            return this.PartialView(genres);
         }
 
         private bool MovieExists(int id)
@@ -216,5 +218,21 @@ namespace WebUI.Controllers
         }
 
 
+    }
+
+    [ViewComponent(Name = "GenreMenuViewComponent")]
+    public class GenreMenuViewComponent : ViewComponent
+    {
+        private readonly MovieDbContext _context;
+
+        public GenreMenuViewComponent(MovieDbContext context)
+        {
+            _context = context;
+        }
+        public async Task<IViewComponentResult> InvokeAsync()
+        {
+            var genres = await _context.Genres.OrderByDescending(g => g.Movies.Count).Take(5).ToListAsync();
+            return this.View(genres);
+        }
     }
 }
