@@ -2,47 +2,40 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
+using Application.Interfaces;
+using AutoMapper;
 using Domain.Models;
+using Filmes.WebApp.Configuration;
 using Infrastructure.Data;
 using Microsoft.AspNetCore.Mvc;
-
+using Microsoft.Extensions.Logging;
 
 namespace MvcMovie.Controllers
 {
-    public class GenreController : Controller
+    public class GenreController : MainController
     {
-        private readonly MovieDbContext _context;
+        private readonly ILogger<GenreController> _logger;
+        private readonly IMovieRepository _movieRepository;
 
-        public GenreController(MovieDbContext context)
+        public GenreController(IMapper mapper, ILogger<GenreController> logger, INotifyService notificacao, IMovieRepository movieRep) : base(mapper, notificacao)
         {
-            _context = context;
+            _logger = logger;
+            _movieRepository = movieRep;
         }
 
         // GET: Genre
-        public ActionResult Index()
+        public IActionResult Index()
         {
-            var genres = _context.Genres.OrderBy(g => g.Name);
-            return View(genres.ToList());
+            var genres = _movieRepository.ListGenres();
+            return View(genres);
         }
 
-        public ActionResult About()
+        public IActionResult About()
         {
-            var data = from movie in _context.Movies
-                       group movie by movie.Genre into dateGroup
-                       select new GenreDataInfo()
-                       {
-                           GenreName = dateGroup.Key.Name,
-                           GenreCount = dateGroup.Count(),
-                           TotalGross = dateGroup.Sum(m => m.Gross),
-                           AverageRating = dateGroup.Average(m => m.Rating)
-                       };
-            return View(data.OrderByDescending(g => g.GenreCount).ToList());
+            
+            return View();
         }
 
-        protected override void Dispose(bool disposing)
-        {
-            _context.Dispose();
-            base.Dispose(disposing);
-        }
+        
     }
 }

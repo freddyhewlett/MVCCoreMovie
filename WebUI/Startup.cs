@@ -1,4 +1,8 @@
+using Application.Interfaces;
+using Application.Services;
 using Infrastructure.Data;
+using Infrastructure.Repository;
+using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Identity;
@@ -18,72 +22,55 @@ namespace WebUI
 {
     public class Startup
     {
-        public IConfiguration Configuration { get; }
-
-        public Startup(IHostEnvironment hostEnvironment)
+        public Startup(IConfiguration configuration)
         {
-            var builder = new ConfigurationBuilder()
-                .SetBasePath(hostEnvironment.ContentRootPath)
-                .AddJsonFile("appsettings.json", true, true)
-                .AddJsonFile($"appsettings.{hostEnvironment.EnvironmentName}.json", true, true)
-                .AddEnvironmentVariables();
-
-            Configuration = builder.Build();
+            Configuration = configuration;
         }
+        public IConfiguration Configuration { get; }        
 
 
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddRazorPages();
             services.AddRazorPages().AddRazorRuntimeCompilation();
-            services.AddControllersWithViews();
+            services.AddControllersWithViews().AddRazorRuntimeCompilation();
             services.AddMvc();
 
-            //services.AddScoped<IMovieRepositorio, MovieRepositorio>();
-            //services.AddScoped<IMovieService, MovieService>();
+            //Authentication
+            services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme).AddCookie(options =>
+            {
+                // Cookie settings
+                options.Cookie.HttpOnly = true;
+                options.ExpireTimeSpan = TimeSpan.FromMinutes(120);
+
+                options.LoginPath = "/Entrar";
+                options.AccessDeniedPath = "/Erro/403";
+                options.SlidingExpiration = true;
+            });
+
+            services.AddScoped<IMovieRepository, MovieRepository>();
+            services.AddScoped<IMovieService, MovieService>();
             services.AddScoped<MovieDbContext>();
             services.AddScoped<SeedConfig>();
+            services.AddScoped<INotifyService, NotifyService>();
 
             services.AddAutoMapper(typeof(Startup));
 
             services.AddDbContext<MovieDbContext>(options => options.UseSqlServer(Configuration.GetConnectionString("Minhaconexaocombanco")));
-            //services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.RequireConfirmedAccount = true).AddEntityFrameworkStores<MovieDbContext>();
-
-            //services.Configure<IdentityOptions>(options =>
-            //{
-            //    //Configuração de bloqueio
-            //    options.Lockout.DefaultLockoutTimeSpan = TimeSpan.FromMinutes(5);
-            //    options.Lockout.MaxFailedAccessAttempts = 5;
-            //    options.Lockout.AllowedForNewUsers = true;
-
-            //    //Configuração de senha
-            //    options.Password.RequireDigit = true;
-            //    options.Password.RequireLowercase = true;
-            //    options.Password.RequireNonAlphanumeric = false;
-            //    options.Password.RequireUppercase = false;
-            //    options.Password.RequiredLength = 6;
-            //    options.Password.RequiredUniqueChars = 1;
-
-            //    //Configuração de sign-in padrão
-            //    options.SignIn.RequireConfirmedEmail = false;
-            //    options.SignIn.RequireConfirmedPhoneNumber = false;
-
-            //    //Configuração de usuario
-            //    options.User.AllowedUserNameCharacters = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ-._@+";
-            //    options.User.RequireUniqueEmail = true;
-            //});
+            
+        
 
 
 
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
-        public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
+        public void Configure(IApplicationBuilder app, IWebHostEnvironment env, SeedConfig seed)
         {
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
+                seed.Seed();
             }
             else
             {
@@ -111,7 +98,10 @@ namespace WebUI
                 endpoints.MapControllerRoute(
                 name: "default",
                 pattern: "{controller=Home}/{action=Index}/{id?}");
+
+                endpoints.MapRazorPages();
             });
+
         }
     }
 }

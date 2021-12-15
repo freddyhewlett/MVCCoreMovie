@@ -19,16 +19,19 @@ namespace Application.Services
             _notifyService = notifyService;
         }
 
-        public async Task<Movie> FindById(int Id)
+        public async Task<Movie> FindById(Guid Id)
         {
-            var result = await _movieRepository.Find(x => x.ID == Id);
+            var result = await _movieRepository.Find(x => x.GenreID == Id);
 
-            //Validar se é nulo, caso seja retornar erro
+            if (result == null)
+            {
+                throw new Exception("Error 404"); //TODO notificar parsonalizado
+            }
 
             return result;
         }
 
-        public async Task<IEnumerable<Movie>> FilmesAll()
+        public async Task<IEnumerable<Movie>> MoviesAll()
         {
             return await _movieRepository.ToList();
         }
@@ -55,9 +58,9 @@ namespace Application.Services
             throw new NotImplementedException();
         }
 
-        public async Task<IEnumerable<Genre>> ListGeneros()
+        public async Task<IEnumerable<Genre>> ListGenres()
         {
-            return await _movieRepository.ListGeneros();
+            return await _movieRepository.ListGenres();
         }
     }
 }

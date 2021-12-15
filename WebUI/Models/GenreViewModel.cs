@@ -8,14 +8,10 @@ namespace WebUI.Models
 {
     public class GenreViewModel
     {
-        public int GenreID { get; set; }
-
-        [Required]
-        public string Name { get; set; }
-
-        [DataType(DataType.MultilineText)]
+        public Guid GenreID { get; set; }        
+        public string Name { get; set; }        
         public string Description { get; set; }
 
-        public virtual ICollection<MovieViewModel> Movies { get; set; }
+        public IEnumerable<MovieViewModel> Movies = new List<MovieViewModel>();
     }
 }

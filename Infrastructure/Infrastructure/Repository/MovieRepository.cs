@@ -20,7 +20,7 @@ namespace Infrastructure.Repository
             _context = context;
         }
 
-        public async Task<Movie> Find(Expression<Func<Domain.Models.Movie, bool>> predicate)
+        public async Task<Movie> Find(Expression<Func<Movie, bool>> predicate)
         {
             return await _context.Movies.Include(x => x.Genre).Where(predicate).FirstOrDefaultAsync();
         }
@@ -52,7 +52,7 @@ namespace Infrastructure.Repository
             return await _context.SaveChangesAsync();
         }
 
-        public async Task<IEnumerable<Genre>> ListGeneros()
+        public async Task<IEnumerable<Genre>> ListGenres()
         {
             return await _context.Genres.AsNoTracking().ToListAsync();
         }

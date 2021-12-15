@@ -13,6 +13,6 @@ namespace Application.Interfaces
 
         bool HasError();
 
-        IEnumerable<Notify> AllErros();
+        IEnumerable<Notify> AllErrors();
     }
 }

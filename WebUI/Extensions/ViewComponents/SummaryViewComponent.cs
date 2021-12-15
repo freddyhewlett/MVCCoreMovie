@@ -11,14 +11,14 @@ namespace WebUI.Extensions.ViewComponents
     {
         private readonly INotifyService _notifiyService;
 
-        public SummaryViewComponent(INotifyService notificacaoServico)
+        public SummaryViewComponent(INotifyService notifyServico)
         {
-            _notifiyService = notificacaoServico;
+            _notifiyService = notifyServico;
         }
 
         public IViewComponentResult Invoke()
         {
-            var notifications = _notifiyService.AllErros().Select(x => x.Error).ToList();
+            var notifications = _notifiyService.AllErrors().Select(x => x.Error).ToList();
 
             notifications.ForEach(x => ViewData.ModelState.AddModelError(string.Empty, x + " <br />"));
 

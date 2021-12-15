@@ -19,7 +19,7 @@ namespace Application.Services
             errorList.Add(new Notify(error));
         }
 
-        public IEnumerable<Notify> AllErros()
+        public IEnumerable<Notify> AllErrors()
         {
             return errorList;
         }

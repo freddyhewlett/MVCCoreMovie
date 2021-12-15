@@ -1,24 +1,39 @@
-﻿using Domain.Models;
+﻿using Application.Interfaces;
+using AutoMapper;
+using Domain.Models;
+using Filmes.WebApp.Configuration;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Logging;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Threading.Tasks;
+using WebUI.Models;
 
 namespace WebUI.Controllers
 {
-    public class HomeController : Controller
+    public class HomeController : MainController
     {
+        private readonly ILogger<HomeController> _logger;
+
+
+        public HomeController(IMapper mapper, ILogger<HomeController> logger, INotifyService notification)
+                                : base(mapper, notification)
+        {
+            _logger = logger;
+        }
+
+        [AllowAnonymous]
         public IActionResult Index()
         {
             return View();
         }
 
+        [AllowAnonymous]
         public IActionResult Privacy()
         {
-            ViewBag.Message = "Your contact page.";
-
             return View();
         }
 
@@ -26,7 +41,7 @@ namespace WebUI.Controllers
         [AllowAnonymous]
         public IActionResult Error(int id)
         {
-            var error = new Error();
+            var error = new ErrorViewModel();
             
             if (id == 404)
             {

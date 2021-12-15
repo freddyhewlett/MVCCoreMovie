@@ -11,10 +11,10 @@ namespace Filmes.WebApp.Configuration
         protected readonly IMapper _mapper;
         protected readonly INotifyService _notification;
 
-        protected MainController(IMapper mapper, INotifyService notificacao)
+        protected MainController(IMapper mapper, INotifyService notification)
         {
             _mapper = mapper;
-            _notification = notificacao;
+            _notification = notification;
         }
 
         protected bool ValidOperation()

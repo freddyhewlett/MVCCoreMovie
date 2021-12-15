@@ -18,6 +18,6 @@ namespace Application.Interfaces
 
 
         Task<int> SaveChanges();
-        Task<IEnumerable<Genre>> ListGeneros();
+        Task<IEnumerable<Genre>> ListGenres();
     }
 }

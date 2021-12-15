@@ -425,15 +425,7 @@ D:\Workplace\MVCCoreMovie\WebUI\obj\Debug\net5.0\scopedcss\bundle\WebUI.styles.c
 D:\Workplace\MVCCoreMovie\WebUI\obj\Debug\net5.0\WebUI.TagHelpers.input.cache
 D:\Workplace\MVCCoreMovie\WebUI\obj\Debug\net5.0\WebUI.TagHelpers.output.cache
 D:\Workplace\MVCCoreMovie\WebUI\obj\Debug\net5.0\WebUI.RazorCoreGenerate.cache
-D:\Workplace\MVCCoreMovie\WebUI\obj\Debug\net5.0\Razor\Views\Genre\Index.cshtml.g.cs
-D:\Workplace\MVCCoreMovie\WebUI\obj\Debug\net5.0\Razor\Views\Home\Error.cshtml.g.cs
 D:\Workplace\MVCCoreMovie\WebUI\obj\Debug\net5.0\Razor\Views\Home\Index.cshtml.g.cs
-D:\Workplace\MVCCoreMovie\WebUI\obj\Debug\net5.0\Razor\Views\Home\Privacy.cshtml.g.cs
-D:\Workplace\MVCCoreMovie\WebUI\obj\Debug\net5.0\Razor\Views\Movie\Browse.cshtml.g.cs
-D:\Workplace\MVCCoreMovie\WebUI\obj\Debug\net5.0\Razor\Views\Movie\Create.cshtml.g.cs
-D:\Workplace\MVCCoreMovie\WebUI\obj\Debug\net5.0\Razor\Views\Movie\Delete.cshtml.g.cs
-D:\Workplace\MVCCoreMovie\WebUI\obj\Debug\net5.0\Razor\Views\Movie\Details.cshtml.g.cs
-D:\Workplace\MVCCoreMovie\WebUI\obj\Debug\net5.0\Razor\Views\Movie\Edit.cshtml.g.cs
 D:\Workplace\MVCCoreMovie\WebUI\obj\Debug\net5.0\Razor\Views\Shared\_Layout.cshtml.g.cs
 D:\Workplace\MVCCoreMovie\WebUI\obj\Debug\net5.0\Razor\Views\Shared\_LoginPartial.cshtml.g.cs
 D:\Workplace\MVCCoreMovie\WebUI\obj\Debug\net5.0\Razor\Views\Shared\_ValidationScriptsPartial.cshtml.g.cs
@@ -447,7 +439,6 @@ D:\Workplace\MVCCoreMovie\WebUI\obj\Debug\net5.0\WebUI.dll
 D:\Workplace\MVCCoreMovie\WebUI\obj\Debug\net5.0\ref\WebUI.dll
 D:\Workplace\MVCCoreMovie\WebUI\obj\Debug\net5.0\WebUI.pdb
 D:\Workplace\MVCCoreMovie\WebUI\obj\Debug\net5.0\WebUI.genruntimeconfig.cache
-D:\Workplace\MVCCoreMovie\WebUI\obj\Debug\net5.0\Razor\Views\Shared\Components\GenreMenuViewComponent\Default.cshtml.g.cs
 D:\Workplace\MVCCoreMovie\WebUI\obj\Debug\net5.0\Razor\Views\Shared\GenreMenu.cshtml.g.cs
 D:\Workplace\MVCCoreMovie\WebUI\bin\Debug\net5.0\Microsoft.AspNetCore.Diagnostics.EntityFrameworkCore.dll
 D:\Workplace\MVCCoreMovie\WebUI\obj\Debug\net5.0\Razor\Areas\Identity\Pages\Account\AccessDenied.cshtml.g.cs
@@ -492,6 +483,11 @@ D:\Workplace\MVCCoreMovie\WebUI\obj\Debug\net5.0\Razor\Areas\Identity\Pages\_Vie
 D:\Workplace\MVCCoreMovie\WebUI\obj\Debug\net5.0\Razor\Areas\Identity\Pages\_ViewStart.cshtml.g.cs
 D:\Workplace\MVCCoreMovie\WebUI\bin\Debug\net5.0\AutoMapper.dll
 D:\Workplace\MVCCoreMovie\WebUI\bin\Debug\net5.0\AutoMapper.Extensions.Microsoft.DependencyInjection.dll
-D:\Workplace\MVCCoreMovie\WebUI\obj\Debug\net5.0\Razor\Views\Movie\Index.cshtml.g.cs
 D:\Workplace\MVCCoreMovie\WebUI\bin\Debug\net5.0\Application.dll
 D:\Workplace\MVCCoreMovie\WebUI\bin\Debug\net5.0\Application.pdb
+D:\Workplace\MVCCoreMovie\WebUI\obj\Debug\net5.0\Razor\Views\Shared\Components\Summary\Default.cshtml.g.cs
+D:\Workplace\MVCCoreMovie\WebUI\obj\Debug\net5.0\Razor\Views\Home\Error.cshtml.g.cs
+D:\Workplace\MVCCoreMovie\WebUI\obj\Debug\net5.0\Razor\Views\Movie\Create.cshtml.g.cs
+D:\Workplace\MVCCoreMovie\WebUI\obj\Debug\net5.0\Razor\Views\Movie\Index.cshtml.g.cs
+D:\Workplace\MVCCoreMovie\WebUI\obj\Debug\net5.0\Razor\Views\Movie\Details.cshtml.g.cs
+D:\Workplace\MVCCoreMovie\WebUI\obj\Debug\net5.0\Razor\Views\Movie\Delete.cshtml.g.cs

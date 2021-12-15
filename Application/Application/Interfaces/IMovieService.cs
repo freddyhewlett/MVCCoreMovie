@@ -9,11 +9,11 @@ namespace Application.Interfaces
 {
     public interface IMovieService
     {
-        Task<IEnumerable<Movie>> FilmesAll();
-        Task<Movie> FindById(int Id);
+        Task<IEnumerable<Movie>> MoviesAll();
+        Task<Movie> FindById(Guid Id);
         Task Insert(Movie filmes);
         Task Update(Movie filmes);
         Task Remove(Movie filmes);
-        Task<IEnumerable<Genre>> ListGeneros();
+        Task<IEnumerable<Genre>> ListGenres();
     }
 }

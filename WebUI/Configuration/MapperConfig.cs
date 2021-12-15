@@ -14,7 +14,6 @@ namespace WebUI.Configuration
             CreateMap<MovieViewModel, Domain.Models.Movie>().ReverseMap();
             CreateMap<GenreViewModel, Domain.Models.Genre>().ReverseMap();
             CreateMap<LogViewModel, Domain.Models.Log>().ReverseMap();
-            CreateMap<ErrorViewModel, Domain.Models.Error>().ReverseMap();
         }
     }
 }
