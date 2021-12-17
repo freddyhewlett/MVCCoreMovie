@@ -21,7 +21,7 @@ namespace Application.Services
 
         public async Task<Movie> FindById(Guid Id)
         {
-            var result = await _movieRepository.Find(x => x.GenreID == Id);
+            var result = await _movieRepository.Find(x => x.Id == Id);
 
             if (result == null)
             {
@@ -36,26 +36,34 @@ namespace Application.Services
             return await _movieRepository.ToList();
         }
 
-        public async Task Insert(Movie filmes)
+        public async Task Insert(Movie movie)
         {
-            if (_movieRepository.Find(x => x.Title == filmes.Title).Result != null)
+            if (_movieRepository.Find(x => x.Title == movie.Title).Result != null)
             {
                 _notifyService.AddError("O titulo cadastrado já existe.");
                 return;
             }
 
-            await _movieRepository.Insert(filmes);
+            await _movieRepository.Insert(movie);
             await _movieRepository.SaveChanges();
         }
 
-        public async Task Remove(Movie filmes)
+        public async Task Remove(Guid id)
         {
-            throw new NotImplementedException();
+            var remove = await FindById(id);
+            if (_notifyService.HasError()) return;
+
+            await _movieRepository.Remove(remove);
+            await _movieRepository.SaveChanges();
         }
 
-        public async Task Update(Movie filmes)
+        public async Task Update(Movie movie)
         {
-            throw new NotImplementedException();
+            
+            if (_notifyService.HasError()) return;
+
+            await _movieRepository.Update(movie);
+            await _movieRepository.SaveChanges();
         }
 
         public async Task<IEnumerable<Genre>> ListGenres()

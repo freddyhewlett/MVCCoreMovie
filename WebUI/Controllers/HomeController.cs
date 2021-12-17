@@ -37,31 +37,11 @@ namespace WebUI.Controllers
             return View();
         }
 
-        [HttpGet("erro/{id:length(3,3)}")]
         [AllowAnonymous]
-        public IActionResult Error(int id)
+        [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
+        public IActionResult Error()
         {
-            var error = new ErrorViewModel();
-            
-            if (id == 404)
-            {
-                error.Message = "Página não existe!";
-                error.Title = "Página não encontrada";
-                error.StatusCode = id;
-            }
-            else if (id == 500) 
-            {
-                error.Message = "Tente novamente mais tarde...";
-                error.Title = "Ocorreu um erro.";
-                error.StatusCode = id;
-            } 
-            else if (id == 403)
-            {
-                error.Message = "Você não tem permissão.";
-                error.Title = "Acesso negado.";
-                error.StatusCode = id;
-            }
-            return View("Error", error);
+            return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
         }
     }
 }

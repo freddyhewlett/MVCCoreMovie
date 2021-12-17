@@ -11,9 +11,31 @@
     <a asp-action="Create">Create New</a>
 </p>
 
+@using (Html.BeginForm())
+{
+    <p>
+        <script type="text/javascript">
+            $(document).ready(function () {
+                $('#searchString').autocomplete({
+                    source: '@Url.Action("MovieFilter")'
+                });
+            });
+        </script>
+        Find by name or director: @Html.TextBox("SearchString")
+        <input type="submit" value="Search" />
+        Select Genre: @Html.DropDownList("SelectedGenre", "All")
+        <input type="submit" value="Filter" />
+
+        @Html.ActionLink("Rating", "index", new { sortOrder = ViewBag.RatingSortParm })
+    </p>
+}
+
 <table class="table">
     <thead>
         <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.ImagePath)
+            </th>
             <th>
                 @Html.DisplayNameFor(model => model.Title)
             </th>
@@ -32,9 +54,7 @@
             <th>
                 @Html.DisplayNameFor(model => model.Genre)
             </th>
-            <th>
-                @Html.DisplayNameFor(model => model.ImagePath)
-            </th>
+
             <th></th>
         </tr>
     </thead>
@@ -42,6 +62,9 @@
         @foreach (var item in Model)
         {
             <tr>
+                <td>
+                    <img src="~/images/@item.ImagePath" class="rounded float-left" width="40" height="40" alt="...">
+                </td>
                 <td>
                     @Html.DisplayFor(modelItem => item.Title)
                 </td>
@@ -60,9 +83,7 @@
                 <td>
                     @Html.DisplayFor(modelItem => item.Genre.Name)
                 </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.ImagePath)
-                </td>
+
                 <td>
                     <a asp-action="Edit" asp-route-id="@item.ID">Edit</a> |
                     <a asp-action="Details" asp-route-id="@item.ID">Details</a> |

@@ -439,7 +439,6 @@ D:\Workplace\MVCCoreMovie\WebUI\obj\Debug\net5.0\WebUI.dll
 D:\Workplace\MVCCoreMovie\WebUI\obj\Debug\net5.0\ref\WebUI.dll
 D:\Workplace\MVCCoreMovie\WebUI\obj\Debug\net5.0\WebUI.pdb
 D:\Workplace\MVCCoreMovie\WebUI\obj\Debug\net5.0\WebUI.genruntimeconfig.cache
-D:\Workplace\MVCCoreMovie\WebUI\obj\Debug\net5.0\Razor\Views\Shared\GenreMenu.cshtml.g.cs
 D:\Workplace\MVCCoreMovie\WebUI\bin\Debug\net5.0\Microsoft.AspNetCore.Diagnostics.EntityFrameworkCore.dll
 D:\Workplace\MVCCoreMovie\WebUI\obj\Debug\net5.0\Razor\Areas\Identity\Pages\Account\AccessDenied.cshtml.g.cs
 D:\Workplace\MVCCoreMovie\WebUI\obj\Debug\net5.0\Razor\Areas\Identity\Pages\Account\ConfirmEmail.cshtml.g.cs
@@ -491,3 +490,7 @@ D:\Workplace\MVCCoreMovie\WebUI\obj\Debug\net5.0\Razor\Views\Movie\Create.cshtml
 D:\Workplace\MVCCoreMovie\WebUI\obj\Debug\net5.0\Razor\Views\Movie\Index.cshtml.g.cs
 D:\Workplace\MVCCoreMovie\WebUI\obj\Debug\net5.0\Razor\Views\Movie\Details.cshtml.g.cs
 D:\Workplace\MVCCoreMovie\WebUI\obj\Debug\net5.0\Razor\Views\Movie\Delete.cshtml.g.cs
+D:\Workplace\MVCCoreMovie\WebUI\obj\Debug\net5.0\Razor\Views\Shared\Error.cshtml.g.cs
+D:\Workplace\MVCCoreMovie\WebUI\obj\Debug\net5.0\Razor\Views\Movie\Edit.cshtml.g.cs
+D:\Workplace\MVCCoreMovie\WebUI\obj\Debug\net5.0\Razor\Views\Genre\Index.cshtml.g.cs
+D:\Workplace\MVCCoreMovie\WebUI\obj\Debug\net5.0\Razor\Views\Genre\Browse.cshtml.g.cs

@@ -11,9 +11,9 @@ namespace Application.Interfaces
     {
         Task<IEnumerable<Movie>> MoviesAll();
         Task<Movie> FindById(Guid Id);
-        Task Insert(Movie filmes);
-        Task Update(Movie filmes);
-        Task Remove(Movie filmes);
+        Task Insert(Movie movie);
+        Task Update(Movie movie);
+        Task Remove(Guid id);
         Task<IEnumerable<Genre>> ListGenres();
     }
 }

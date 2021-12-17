@@ -32,15 +32,13 @@ namespace WebUI.Models
         [DisplayFormat(DataFormatString = "{0:C0}")]
         public decimal Gross { get; set; }
 
-        [Required]
-        [Range(0.0, 10.0)]
-        [DisplayFormat(DataFormatString = "{0:0.0}")]
-        public double Rating { get; set; }
+        [Required]      
+        public string Rating { get; set; }
+
+        [Display(Name ="Genero")]
         public Guid GenreID { get; set; }
         public GenreViewModel Genre { get; set; }  
-        public string ImagePath { get; set; }
-
-        [Display(Name ="Upload de imagem")]
+        public string ImagePath { get; set; }        
         public IFormFile ImageUpload { get; set; }        
         
 

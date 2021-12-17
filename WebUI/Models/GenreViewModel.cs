@@ -12,6 +12,13 @@ namespace WebUI.Models
         public string Name { get; set; }        
         public string Description { get; set; }
 
-        public IEnumerable<MovieViewModel> Movies = new List<MovieViewModel>();
+        public IEnumerable<MovieViewModel> Movies { get; set; }
+
+        public GenreViewModel(string name, string description, IEnumerable<MovieViewModel> movies)
+        {
+            Name = name;
+            Description = description;
+            Movies = movies;
+        }
     }
 }

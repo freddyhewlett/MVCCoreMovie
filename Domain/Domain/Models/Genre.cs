@@ -12,6 +12,8 @@ namespace Domain.Models
         public Guid GenreID { get; set; }
         public string Name { get; set; }        
         public string Description { get; set; }
-        public virtual ICollection<Movie> Movies { get; set; }
+        public IEnumerable<Movie> Movies { get; set; }
+
+        
     }
 }

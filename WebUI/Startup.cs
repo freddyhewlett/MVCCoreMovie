@@ -14,6 +14,7 @@ using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Linq;
 using System.Threading.Tasks;
 using WebUI.Configuration;
@@ -49,10 +50,12 @@ namespace WebUI
             });
 
             services.AddScoped<IMovieRepository, MovieRepository>();
-            services.AddScoped<IMovieService, MovieService>();
+            services.AddScoped<IMovieService, MovieService>();            
+            services.AddScoped<INotifyService, NotifyService>();
+            services.AddScoped<IGenreRepository, GenreRepository>();
+            services.AddScoped<IGenreService, GenreService>();
             services.AddScoped<MovieDbContext>();
             services.AddScoped<SeedConfig>();
-            services.AddScoped<INotifyService, NotifyService>();
 
             services.AddAutoMapper(typeof(Startup));
 
@@ -92,6 +95,15 @@ namespace WebUI
             app.UseAuthentication();
 
             app.UseAuthorization();
+
+            var supportedCultures = new[] { new CultureInfo("pt-BR") };
+
+            app.UseRequestLocalization(new RequestLocalizationOptions
+            {
+                DefaultRequestCulture = new Microsoft.AspNetCore.Localization.RequestCulture("pt-BR"),
+                SupportedCultures = supportedCultures,
+                SupportedUICultures = supportedCultures
+            });
 
             app.UseEndpoints(endpoints =>
             {
