@@ -32,15 +32,16 @@ namespace WebUI.Controllers
         [AllowAnonymous]
         public async Task<IActionResult> Index(string searchString, Guid? SelectedGenre, string sortOrder)
         {
-            var genres = _movieService.ListGenres();
-            ViewBag.SelectedGenre = new SelectList(await genres, "GenreID", "Name", SelectedGenre);
-            Guid genreID = SelectedGenre.GetValueOrDefault();
+            var genreViewModel = _mapper.Map<IEnumerable<GenreViewModel>>(await _movieService.ListGenres());
+            ViewBag.SelectedGenre = new SelectList(genreViewModel, "GenreID", "Name", SelectedGenre);
             var movies = _mapper.Map<IEnumerable<MovieViewModel>>(await _movieService.MoviesAll());
 
             if (!String.IsNullOrEmpty(searchString))
             {
-                //movies = movies.Where(s => s.Title.Contains(searchString) || s.Director.Contains(searchString));
+                var movieSearch = _mapper.Map<IQueryable<MovieViewModel>>(_movieService.SearchString(searchString, SelectedGenre));
+                return View(movieSearch);
             }
+            
 
             ViewBag.RatingSortParm = sortOrder == "Rating" ? "rating_asc" : "Rating";
 
@@ -96,7 +97,12 @@ namespace WebUI.Controllers
         {
             if (!ModelState.IsValid) return View(await MappingListGenres(viewModel));
 
-            string path = Guid.NewGuid().ToString() + Path.GetExtension(viewModel.ImageUpload?.FileName);
+            string path = string.Empty;
+
+            if (viewModel.ImageUpload.Length > 0)
+            {
+                path = Guid.NewGuid().ToString() + Path.GetExtension(viewModel.ImageUpload?.FileName);
+            }
 
             if (UploadFile(viewModel.ImageUpload, path).Result)
             {
@@ -113,7 +119,7 @@ namespace WebUI.Controllers
             if (_notification.HasError()) return RedirectToAction(nameof(Error));
 
             return RedirectToAction(nameof(Index));
-            
+
         }
 
         [HttpGet]
@@ -132,7 +138,12 @@ namespace WebUI.Controllers
         {
             if (!ModelState.IsValid) return View(await MappingListGenres(viewModel));
 
-            string path = Guid.NewGuid().ToString() + Path.GetExtension(viewModel.ImageUpload?.FileName);
+            string path = string.Empty;
+
+            if (viewModel.ImageUpload.Length > 0)
+            {
+                path = Guid.NewGuid().ToString() + Path.GetExtension(viewModel.ImageUpload?.FileName);
+            }
 
             if (UploadFile(viewModel.ImageUpload, path).Result)
             {
@@ -141,7 +152,6 @@ namespace WebUI.Controllers
 
             await _movieService.Insert(_mapper.Map<Movie>(viewModel));
 
-            //Validar se a operação foi valida
             if (!ValidOperation())
             {
                 return View(await MappingListGenres(viewModel));
@@ -168,7 +178,25 @@ namespace WebUI.Controllers
         [AutoValidateAntiforgeryToken]
         public async Task<IActionResult> DeleteConfirmed(Guid id)
         {
+            var movie = await _movieService.FindById(id);
+
+            if (movie != null)
+            {
+                var viewModel = _mapper.Map<MovieViewModel>(movie);
+                if (viewModel.ImageUpload != null)
+                {
+                    if (System.IO.File.Exists(viewModel.ImagePath))
+                    {
+                        //var path = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot/images", viewModel.ImagePath);
+                        System.IO.File.Delete(viewModel.ImagePath);
+                    }
+                }
+            }
+
+
             await _movieService.Remove(id);
+
+
 
             if (_notification.HasError()) return RedirectToAction(nameof(Error));
 
@@ -183,7 +211,7 @@ namespace WebUI.Controllers
 
         private async Task<bool> UploadFile(IFormFile imageUpload, string imgPath)
         {
-            if (imageUpload == null || imageUpload?.Length > 0)
+            if (imageUpload == null || imageUpload?.Length == 0)
             {
                 return false;
             }
@@ -202,7 +230,16 @@ namespace WebUI.Controllers
             return true;
         }
 
-        
+        [HttpGet]
+        [AllowAnonymous]
+        public IActionResult MovieFilter(string term)
+        {
+            term = term.ToLower();
+
+            var movies = _movieService.MovieFilter(term);
+
+            return Json(movies, System.Web.Mvc.JsonRequestBehavior.AllowGet);
+        }
 
         [AllowAnonymous]
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
@@ -210,5 +247,5 @@ namespace WebUI.Controllers
         {
             return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
         }
-    }   
+    }
 }

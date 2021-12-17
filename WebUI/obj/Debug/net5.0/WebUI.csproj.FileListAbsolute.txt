@@ -494,3 +494,10 @@ D:\Workplace\MVCCoreMovie\WebUI\obj\Debug\net5.0\Razor\Views\Shared\Error.cshtml
 D:\Workplace\MVCCoreMovie\WebUI\obj\Debug\net5.0\Razor\Views\Movie\Edit.cshtml.g.cs
 D:\Workplace\MVCCoreMovie\WebUI\obj\Debug\net5.0\Razor\Views\Genre\Index.cshtml.g.cs
 D:\Workplace\MVCCoreMovie\WebUI\obj\Debug\net5.0\Razor\Views\Genre\Browse.cshtml.g.cs
+D:\Workplace\MVCCoreMovie\WebUI\bin\Debug\net5.0\System.Web.Mvc.dll
+D:\Workplace\MVCCoreMovie\WebUI\bin\Debug\net5.0\System.Web.Razor.dll
+D:\Workplace\MVCCoreMovie\WebUI\bin\Debug\net5.0\System.Web.Helpers.dll
+D:\Workplace\MVCCoreMovie\WebUI\bin\Debug\net5.0\System.Web.WebPages.Deployment.dll
+D:\Workplace\MVCCoreMovie\WebUI\bin\Debug\net5.0\System.Web.WebPages.Razor.dll
+D:\Workplace\MVCCoreMovie\WebUI\bin\Debug\net5.0\System.Web.WebPages.dll
+D:\Workplace\MVCCoreMovie\WebUI\bin\Debug\net5.0\Microsoft.Web.Infrastructure.dll

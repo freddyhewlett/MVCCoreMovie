@@ -15,5 +15,7 @@ namespace Application.Interfaces
         Task Update(Movie movie);
         Task Remove(Guid id);
         Task<IEnumerable<Genre>> ListGenres();
+        IQueryable<string> MovieFilter(string term);
+        IQueryable<Movie> SearchString(string search, Guid? selectedGenre);
     }
 }

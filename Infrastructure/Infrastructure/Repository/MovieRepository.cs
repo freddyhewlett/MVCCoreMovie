@@ -4,6 +4,7 @@ using Infrastructure.Data;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Linq.Expressions;
 using System.Text;
@@ -25,14 +26,19 @@ namespace Infrastructure.Repository
             return await _context.Movies.Include(x => x.Genre).Where(predicate).FirstOrDefaultAsync();
         }
 
-        public async Task Insert(Movie filmes)
+        public async Task Insert(Movie movie)
         {
-            await _context.AddAsync(filmes);
+            await _context.AddAsync(movie);
         }
 
-        public async Task Remove(Movie filmes)
+        public async Task Remove(Movie movie)
         {
-            _context.Remove(filmes);
+            var path = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot/images", movie.ImagePath);
+            if (File.Exists(path))
+            {
+                File.Delete(path);
+            }
+            _context.Remove(movie);
             await Task.CompletedTask;
         }
 
@@ -45,6 +51,25 @@ namespace Infrastructure.Repository
         {
             _context.Update(filmes);
             await Task.CompletedTask;
+        }
+
+        public IQueryable<string> MovieFilter(string term)
+        {
+            var movies = from movie in _context.Movies
+                         where (movie.Title.ToLower().Contains(term))
+                         select movie.Title;
+            return movies;
+        }
+
+        public IQueryable<Movie> SearchString(string search, Guid? selectedGenre)
+        {
+            var genreID = selectedGenre.GetValueOrDefault();
+            var movies = _context.Movies.Where(c => !selectedGenre.HasValue || c.GenreID == genreID);
+            if (!String.IsNullOrEmpty(search))
+            {
+                movies = movies.Where(s => s.Title.Contains(search) || s.Director.Contains(search));
+            }
+            return movies;
         }
 
         public async Task<int> SaveChanges()
