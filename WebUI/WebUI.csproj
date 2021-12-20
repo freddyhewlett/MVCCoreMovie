@@ -5,6 +5,11 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Content Remove="wwwroot\images\b61c0b0f-7b20-44e1-ad5f-830dd16b40e2.jpg" />
+    <Content Remove="wwwroot\images\fedff0d6-453a-425f-9d1c-6adf3e94c811.jpg" />
+  </ItemGroup>
+
+  <ItemGroup>
     <None Include="wwwroot\images\calendar.gif" />
     <None Include="wwwroot\images\filmstripe.jpg" />
     <None Include="wwwroot\images\Imagem1.jpg" />

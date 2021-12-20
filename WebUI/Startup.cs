@@ -96,11 +96,11 @@ namespace WebUI
 
             app.UseAuthorization();
 
-            var supportedCultures = new[] { new CultureInfo("pt-BR") };
+            var supportedCultures = new[] { new CultureInfo("en-US") };
 
             app.UseRequestLocalization(new RequestLocalizationOptions
             {
-                DefaultRequestCulture = new Microsoft.AspNetCore.Localization.RequestCulture("pt-BR"),
+                DefaultRequestCulture = new Microsoft.AspNetCore.Localization.RequestCulture("en-US"),
                 SupportedCultures = supportedCultures,
                 SupportedUICultures = supportedCultures
             });

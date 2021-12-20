@@ -487,7 +487,6 @@ D:\Workplace\MVCCoreMovie\WebUI\bin\Debug\net5.0\Application.pdb
 D:\Workplace\MVCCoreMovie\WebUI\obj\Debug\net5.0\Razor\Views\Shared\Components\Summary\Default.cshtml.g.cs
 D:\Workplace\MVCCoreMovie\WebUI\obj\Debug\net5.0\Razor\Views\Home\Error.cshtml.g.cs
 D:\Workplace\MVCCoreMovie\WebUI\obj\Debug\net5.0\Razor\Views\Movie\Create.cshtml.g.cs
-D:\Workplace\MVCCoreMovie\WebUI\obj\Debug\net5.0\Razor\Views\Movie\Index.cshtml.g.cs
 D:\Workplace\MVCCoreMovie\WebUI\obj\Debug\net5.0\Razor\Views\Movie\Details.cshtml.g.cs
 D:\Workplace\MVCCoreMovie\WebUI\obj\Debug\net5.0\Razor\Views\Movie\Delete.cshtml.g.cs
 D:\Workplace\MVCCoreMovie\WebUI\obj\Debug\net5.0\Razor\Views\Shared\Error.cshtml.g.cs
@@ -501,3 +500,4 @@ D:\Workplace\MVCCoreMovie\WebUI\bin\Debug\net5.0\System.Web.WebPages.Deployment.
 D:\Workplace\MVCCoreMovie\WebUI\bin\Debug\net5.0\System.Web.WebPages.Razor.dll
 D:\Workplace\MVCCoreMovie\WebUI\bin\Debug\net5.0\System.Web.WebPages.dll
 D:\Workplace\MVCCoreMovie\WebUI\bin\Debug\net5.0\Microsoft.Web.Infrastructure.dll
+D:\Workplace\MVCCoreMovie\WebUI\obj\Debug\net5.0\Razor\Views\Movie\Index.cshtml.g.cs

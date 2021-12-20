@@ -30,10 +30,13 @@ namespace WebUI.Models
 
         [DataType(DataType.Currency)]
         [DisplayFormat(DataFormatString = "{0:C0}")]
+        [RegularExpression(@"^\d+(\.\d{1,2})?$")]
         public decimal Gross { get; set; }
 
-        [Required]      
-        public string Rating { get; set; }
+        [Required]
+        [RegularExpression(@"^\d+.?\d{0,1}$", ErrorMessage = "O {0} deve conter apenas numeros positivos e apenas uma casa decimal")]
+        [Range(typeof(double), "0", "10", ConvertValueInInvariantCulture = true, ErrorMessage = "O {0} deve ser entre 0 e 10.")]
+        public double Rating { get; set; }
 
         [Display(Name ="Genero")]
         public Guid GenreID { get; set; }

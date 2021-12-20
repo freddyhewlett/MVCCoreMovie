@@ -28,7 +28,7 @@ namespace WebUI.Controllers
         {
             _movieService = movieServico;
         }
-        [HttpGet]
+
         [AllowAnonymous]
         public async Task<IActionResult> Index(string searchString, Guid? SelectedGenre, string sortOrder)
         {
@@ -36,12 +36,12 @@ namespace WebUI.Controllers
             ViewBag.SelectedGenre = new SelectList(genreViewModel, "GenreID", "Name", SelectedGenre);
             var movies = _mapper.Map<IEnumerable<MovieViewModel>>(await _movieService.MoviesAll());
 
-            if (!String.IsNullOrEmpty(searchString))
+            if (searchString != null)
             {
-                var movieSearch = _mapper.Map<IQueryable<MovieViewModel>>(_movieService.SearchString(searchString, SelectedGenre));
+                var movieSearch = _mapper.Map<IEnumerable<MovieViewModel>>(_movieService.SearchString(searchString, SelectedGenre));
                 return View(movieSearch);
             }
-            
+
 
             ViewBag.RatingSortParm = sortOrder == "Rating" ? "rating_asc" : "Rating";
 
@@ -96,17 +96,26 @@ namespace WebUI.Controllers
         public async Task<IActionResult> EditConfirmed(MovieViewModel viewModel)
         {
             if (!ModelState.IsValid) return View(await MappingListGenres(viewModel));
-
+            
             string path = string.Empty;
 
-            if (viewModel.ImageUpload.Length > 0)
+            if (viewModel.ImageUpload != null)
             {
+                //var movie = await _movieService.FindById(viewModel.ID);
+                //if (movie.ImagePath != null)
+                //{
+                //    var oldPath = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot/images", movie.ImagePath);
+                //    if (System.IO.File.Exists(oldPath))
+                //    {
+                //        System.IO.File.Delete(oldPath);
+                //    }
+                //}
                 path = Guid.NewGuid().ToString() + Path.GetExtension(viewModel.ImageUpload?.FileName);
-            }
 
-            if (UploadFile(viewModel.ImageUpload, path).Result)
-            {
-                viewModel.ImagePath = path;
+                if (UpdateFile(viewModel.ImageUpload, path).Result)
+                {
+                    viewModel.ImagePath = path;
+                }
             }
 
             await _movieService.Update(_mapper.Map<Movie>(viewModel));
@@ -230,7 +239,28 @@ namespace WebUI.Controllers
             return true;
         }
 
-        [HttpGet]
+        private async Task<bool> UpdateFile(IFormFile imageUpload, string imgPath)
+        {
+            if (imageUpload == null || imageUpload?.Length == 0)
+            {
+                return false;
+            }
+
+            var path = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot/images", imgPath);
+
+            if (System.IO.File.Exists(path))
+            {
+                return false;
+            }
+
+            using (var stream = new FileStream(path, FileMode.Create))
+            {
+                await imageUpload.CopyToAsync(stream);
+            }
+            return true;
+        }
+
+
         [AllowAnonymous]
         public IActionResult MovieFilter(string term)
         {

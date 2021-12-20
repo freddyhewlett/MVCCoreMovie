@@ -47,9 +47,10 @@ namespace Infrastructure.Repository
             return await _context.Movies.Include(x => x.Genre).ToListAsync();
         }
 
-        public async Task Update(Movie filmes)
+        public async Task Update(Movie movie)
         {
-            _context.Update(filmes);
+            
+            _context.Update(movie);
             await Task.CompletedTask;
         }
 
