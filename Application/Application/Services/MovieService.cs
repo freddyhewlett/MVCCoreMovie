@@ -84,5 +84,10 @@ namespace Application.Services
 
             return movies;
         }
+
+        public async Task<string> FindImagePath(Guid id)
+        {
+            return await _movieRepository.FindImagePath(id);
+        }
     }
 }

@@ -82,5 +82,14 @@ namespace Infrastructure.Repository
         {
             return await _context.Genres.AsNoTracking().ToListAsync();
         }
+
+        public async Task<string> FindImagePath(Guid id)
+        {
+            var movie = await _context.Movies.AsNoTracking().ToListAsync();
+            var movieScope = movie.Find(x => x.Id == id);
+            //var movie = await _context.Movies.FindAsync(id);
+            var path = movieScope.ImagePath;
+            return path;
+        }
     }
 }

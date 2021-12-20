@@ -17,6 +17,7 @@ namespace Application.Interfaces
         Task Remove(Movie movie);
         IQueryable<string> MovieFilter(string term);
         IQueryable<Movie> SearchString(string search, Guid? selectedGenre);
+        Task<string> FindImagePath(Guid id);
 
         Task<int> SaveChanges();
         Task<IEnumerable<Genre>> ListGenres();

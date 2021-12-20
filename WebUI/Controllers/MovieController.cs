@@ -101,15 +101,15 @@ namespace WebUI.Controllers
 
             if (viewModel.ImageUpload != null)
             {
-                //var movie = await _movieService.FindById(viewModel.ID);
-                //if (movie.ImagePath != null)
-                //{
-                //    var oldPath = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot/images", movie.ImagePath);
-                //    if (System.IO.File.Exists(oldPath))
-                //    {
-                //        System.IO.File.Delete(oldPath);
-                //    }
-                //}
+                var movie = await _movieService.FindImagePath(viewModel.ID);
+                if (movie != null)
+                {
+                    var oldPath = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot/images", movie);
+                    if (System.IO.File.Exists(oldPath))
+                    {
+                        System.IO.File.Delete(oldPath);
+                    }
+                }
                 path = Guid.NewGuid().ToString() + Path.GetExtension(viewModel.ImageUpload?.FileName);
 
                 if (UpdateFile(viewModel.ImageUpload, path).Result)

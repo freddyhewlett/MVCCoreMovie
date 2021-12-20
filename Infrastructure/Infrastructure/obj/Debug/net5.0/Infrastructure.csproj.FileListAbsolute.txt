@@ -4,7 +4,9 @@ D:\Workplace\MVCCoreMovie\Infrastructure\Infrastructure\bin\Debug\net5.0\Infrast
 D:\Workplace\MVCCoreMovie\Infrastructure\Infrastructure\bin\Debug\net5.0\Infrastructure.dll
 D:\Workplace\MVCCoreMovie\Infrastructure\Infrastructure\bin\Debug\net5.0\ref\Infrastructure.dll
 D:\Workplace\MVCCoreMovie\Infrastructure\Infrastructure\bin\Debug\net5.0\Infrastructure.pdb
+D:\Workplace\MVCCoreMovie\Infrastructure\Infrastructure\bin\Debug\net5.0\Application.dll
 D:\Workplace\MVCCoreMovie\Infrastructure\Infrastructure\bin\Debug\net5.0\Domain.dll
+D:\Workplace\MVCCoreMovie\Infrastructure\Infrastructure\bin\Debug\net5.0\Application.pdb
 D:\Workplace\MVCCoreMovie\Infrastructure\Infrastructure\bin\Debug\net5.0\Domain.pdb
 D:\Workplace\MVCCoreMovie\Infrastructure\Infrastructure\obj\Debug\net5.0\Infrastructure.csproj.AssemblyReference.cache
 D:\Workplace\MVCCoreMovie\Infrastructure\Infrastructure\obj\Debug\net5.0\Infrastructure.GeneratedMSBuildEditorConfig.editorconfig
@@ -16,5 +18,3 @@ D:\Workplace\MVCCoreMovie\Infrastructure\Infrastructure\obj\Debug\net5.0\Infrast
 D:\Workplace\MVCCoreMovie\Infrastructure\Infrastructure\obj\Debug\net5.0\ref\Infrastructure.dll
 D:\Workplace\MVCCoreMovie\Infrastructure\Infrastructure\obj\Debug\net5.0\Infrastructure.pdb
 D:\Workplace\MVCCoreMovie\Infrastructure\Infrastructure\obj\Debug\net5.0\Infrastructure.genruntimeconfig.cache
-D:\Workplace\MVCCoreMovie\Infrastructure\Infrastructure\bin\Debug\net5.0\Application.dll
-D:\Workplace\MVCCoreMovie\Infrastructure\Infrastructure\bin\Debug\net5.0\Application.pdb
