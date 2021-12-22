@@ -292,12 +292,6 @@ D:\Workplace\MVCCoreMovie\WebUI\bin\Debug\net5.0\WebUI.Views.pdb
 D:\Workplace\MVCCoreMovie\WebUI\bin\Debug\net5.0\AutoMapper.dll
 D:\Workplace\MVCCoreMovie\WebUI\bin\Debug\net5.0\AutoMapper.Extensions.Microsoft.DependencyInjection.dll
 D:\Workplace\MVCCoreMovie\WebUI\bin\Debug\net5.0\Humanizer.dll
-D:\Workplace\MVCCoreMovie\WebUI\bin\Debug\net5.0\System.Web.Mvc.dll
-D:\Workplace\MVCCoreMovie\WebUI\bin\Debug\net5.0\System.Web.Razor.dll
-D:\Workplace\MVCCoreMovie\WebUI\bin\Debug\net5.0\System.Web.Helpers.dll
-D:\Workplace\MVCCoreMovie\WebUI\bin\Debug\net5.0\System.Web.WebPages.Deployment.dll
-D:\Workplace\MVCCoreMovie\WebUI\bin\Debug\net5.0\System.Web.WebPages.Razor.dll
-D:\Workplace\MVCCoreMovie\WebUI\bin\Debug\net5.0\System.Web.WebPages.dll
 D:\Workplace\MVCCoreMovie\WebUI\bin\Debug\net5.0\Microsoft.AspNetCore.Cryptography.Internal.dll
 D:\Workplace\MVCCoreMovie\WebUI\bin\Debug\net5.0\Microsoft.AspNetCore.Cryptography.KeyDerivation.dll
 D:\Workplace\MVCCoreMovie\WebUI\bin\Debug\net5.0\Microsoft.AspNetCore.Diagnostics.EntityFrameworkCore.dll
@@ -338,7 +332,6 @@ D:\Workplace\MVCCoreMovie\WebUI\bin\Debug\net5.0\Microsoft.VisualStudio.Web.Code
 D:\Workplace\MVCCoreMovie\WebUI\bin\Debug\net5.0\Microsoft.VisualStudio.Web.CodeGeneration.Templating.dll
 D:\Workplace\MVCCoreMovie\WebUI\bin\Debug\net5.0\Microsoft.VisualStudio.Web.CodeGeneration.Utils.dll
 D:\Workplace\MVCCoreMovie\WebUI\bin\Debug\net5.0\Microsoft.VisualStudio.Web.CodeGenerators.Mvc.dll
-D:\Workplace\MVCCoreMovie\WebUI\bin\Debug\net5.0\Microsoft.Web.Infrastructure.dll
 D:\Workplace\MVCCoreMovie\WebUI\bin\Debug\net5.0\Newtonsoft.Json.dll
 D:\Workplace\MVCCoreMovie\WebUI\bin\Debug\net5.0\System.Composition.AttributedModel.dll
 D:\Workplace\MVCCoreMovie\WebUI\bin\Debug\net5.0\System.Composition.Convention.dll

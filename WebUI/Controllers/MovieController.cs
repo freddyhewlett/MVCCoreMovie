@@ -31,33 +31,9 @@ namespace WebUI.Controllers
         }
 
         [AllowAnonymous]
-        public async Task<IActionResult> Index(string searchString, Guid? SelectedGenre, string sortOrder)
-        {
-            var genreViewModel = _mapper.Map<IEnumerable<GenreViewModel>>(await _movieService.ListGenres());
-            ViewBag.SelectedGenre = new SelectList(genreViewModel, "GenreID", "Name", SelectedGenre);
-            var movies = _mapper.Map<IEnumerable<MovieViewModel>>(await _movieService.MoviesAll());
-
-            if (searchString != null)
-            {
-                var movieSearch = _mapper.Map<IEnumerable<MovieViewModel>>(_movieService.SearchString(searchString, SelectedGenre));
-                return View(movieSearch);
-            }
-
-
-            ViewBag.RatingSortParm = sortOrder == "Rating" ? "rating_asc" : "Rating";
-
-            switch (sortOrder)
-            {
-                case "Rating":
-                    movies = movies.OrderByDescending(s => s.Rating);
-                    break;
-                case "rating_asc":
-                    movies = movies.OrderBy(s => s.Rating);
-                    break;
-                default:
-                    movies = movies.OrderBy(s => s.Title);
-                    break;
-            }
+        public async Task<IActionResult> Index()
+        {            
+            var movies = _mapper.Map<IEnumerable<MovieViewModel>>(await _movieService.MoviesAll());            
 
             return View(movies);
         }
@@ -234,7 +210,6 @@ namespace WebUI.Controllers
                 {
                     if (System.IO.File.Exists(viewModel.ImagePath))
                     {
-                        //var path = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot/images", viewModel.ImagePath);
                         System.IO.File.Delete(viewModel.ImagePath);
                     }
                 }
@@ -296,17 +271,6 @@ namespace WebUI.Controllers
                 await imageUpload.CopyToAsync(stream);
             }
             return true;
-        }
-
-
-        [AllowAnonymous]
-        public IActionResult MovieFilter(string term)
-        {
-            term = term.ToLower();
-
-            var movies = _movieService.MovieFilter(term);
-
-            return Json(movies, System.Web.Mvc.JsonRequestBehavior.AllowGet);
         }
 
         [AllowAnonymous]

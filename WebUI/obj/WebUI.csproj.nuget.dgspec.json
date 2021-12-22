@@ -275,10 +275,6 @@
               "target": "Package",
               "version": "[8.1.1, )"
             },
-            "Microsoft.AspNet.Mvc": {
-              "target": "Package",
-              "version": "[5.0.2, )"
-            },
             "Microsoft.AspNetCore.Diagnostics.EntityFrameworkCore": {
               "target": "Package",
               "version": "[5.0.12, )"

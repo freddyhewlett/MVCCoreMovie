@@ -75,14 +75,7 @@ namespace Application.Services
         public async Task<IEnumerable<Genre>> ListGenres()
         {
             return await _movieRepository.ListGenres();
-        }
-
-        public IQueryable<string> MovieFilter(string term)
-        {
-            var movies = _movieRepository.MovieFilter(term);
-
-            return movies;
-        }
+        }        
 
         public IQueryable<Movie> SearchString(string search, Guid? selectedGenre)
         {

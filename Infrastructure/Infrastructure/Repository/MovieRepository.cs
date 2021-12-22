@@ -87,14 +87,6 @@ namespace Infrastructure.Repository
             await Task.CompletedTask;
         }
 
-        public IQueryable<string> MovieFilter(string term)
-        {
-            var movies = from movie in _context.Movies
-                         where (movie.Title.ToLower().Contains(term))
-                         select movie.Title;
-            return movies;
-        }
-
         public IQueryable<Movie> SearchString(string search, Guid? selectedGenre)
         {
             var genreID = selectedGenre.GetValueOrDefault();
