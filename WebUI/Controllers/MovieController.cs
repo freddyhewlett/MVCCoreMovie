@@ -16,6 +16,7 @@ using WebUI.Models;
 using System.IO;
 using System.Diagnostics;
 using System.Collections;
+using WebUI.Utilities;
 
 namespace WebUI.Controllers
 {
@@ -53,9 +54,47 @@ namespace WebUI.Controllers
                 case "rating_asc":
                     movies = movies.OrderBy(s => s.Rating);
                     break;
+                default:
+                    movies = movies.OrderBy(s => s.Title);
+                    break;
             }
 
             return View(movies);
+        }
+
+        [AllowAnonymous]
+        public async Task<IActionResult> IndexFilter(string sortOrder, Guid? SelectedGenre, string searchString, int? pageNumber, string currentFilter)
+        {
+            ViewData["CurrentSort"] = sortOrder;
+            ViewData["NameSortParm"] = String.IsNullOrEmpty(sortOrder) ? "title_desc" : "";
+            ViewData["DateSortParm"] = sortOrder == "Date" ? "date_desc" : "Date";
+            ViewData["GrossSortParm"] = sortOrder == "Gross" ? "gross_desc" : "Gross";
+            ViewData["RatingSortParm"] = sortOrder == "Rating" ? "rate_desc" : "Rating";
+            ViewData["CurrentFilter"] = searchString;
+            var genreViewModel = _mapper.Map<IEnumerable<GenreViewModel>>(await _movieService.ListGenres());
+            ViewBag.SelectedGenre = new SelectList(genreViewModel, "GenreID", "Name", SelectedGenre);
+
+            if (searchString != null)
+            {
+                pageNumber = 1;
+            }
+            else
+            {
+                searchString = currentFilter;
+            }
+
+            if (!String.IsNullOrEmpty(searchString))
+            {
+                var movieSearch = _mapper.Map<IEnumerable<MovieViewModel>>(_movieService.SearchString(searchString, SelectedGenre));
+                return View(movieSearch);
+            }
+
+            var sort = await _movieService.SortFilter(sortOrder);
+            var result = _mapper.Map<List<MovieViewModel>>(sort);
+
+            int pageSize = 5;
+
+            return View(await PaginatedList<MovieViewModel>.CreateAsync(result, pageNumber ?? 1, pageSize));
         }
 
         [HttpGet]
@@ -95,12 +134,11 @@ namespace WebUI.Controllers
         [AutoValidateAntiforgeryToken]
         public async Task<IActionResult> EditConfirmed(MovieViewModel viewModel)
         {
-            if (!ModelState.IsValid) return View(await MappingListGenres(viewModel));
+            if (!ModelState.IsValid) return View(await MappingListGenres(viewModel));            
             
-            string path = string.Empty;
-
             if (viewModel.ImageUpload != null)
             {
+                string path = string.Empty;
                 var movie = await _movieService.FindImagePath(viewModel.ID);
                 if (movie != null)
                 {

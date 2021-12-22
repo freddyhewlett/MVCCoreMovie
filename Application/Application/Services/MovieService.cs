@@ -19,9 +19,9 @@ namespace Application.Services
             _notifyService = notifyService;
         }
 
-        public async Task<Movie> FindById(Guid Id)
+        public async Task<Movie> FindById(Guid id)
         {
-            var result = await _movieRepository.Find(x => x.Id == Id);
+            var result = await _movieRepository.Find(x => x.Id == id);
 
             if (result == null)
             {
@@ -46,6 +46,12 @@ namespace Application.Services
 
             await _movieRepository.Insert(movie);
             await _movieRepository.SaveChanges();
+        }
+
+        public async Task<List<Movie>> SortFilter(string sortOrder)
+        {
+            var sort = await _movieRepository.SortFilter(sortOrder);
+            return sort;
         }
 
         public async Task Remove(Guid id)

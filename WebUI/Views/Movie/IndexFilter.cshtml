@@ -1,0 +1,108 @@
+﻿@model WebUI.Utilities.PaginatedList<MovieViewModel>
+
+@{
+    ViewData["Title"] = "IndexFilter";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h1>IndexFilter</h1>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+
+<form asp-action="IndexFilter" method="get">
+    <div class="form-actions no-color">
+        <p>
+            Find by Title or Director: <input type="text" name="SearchString" value="@ViewData["CurrentFilter"]" />
+            <input type="submit" value="Search" class="btn btn-dark" />
+            Select Genre: @Html.DropDownList("SelectedGenre", "All")
+            <input type="submit" value="Filter" class="btn btn-dark" />|
+            <a asp-action="IndexFilter">Back to Full List</a>
+        </p>
+    </div>
+</form>
+
+<table class="table">
+    <thead>
+        <tr>
+
+            <th>
+                Picture
+            </th>
+            <th>
+                <a asp-action="IndexFilter" asp-route-sortOrder="@ViewData["NameSortParm"]">Title</a>
+            </th>
+            <th>
+                <a asp-action="IndexFilter" asp-route-sortOrder="@ViewData["DateSortParm"]">Release Date</a>
+            </th>
+            <th>
+                Director
+            </th>
+            <th>
+                <a asp-action="IndexFilter" asp-route-sortOrder="@ViewData["GrossSortParm"]">Gross</a>
+            </th>
+            <th>
+                <a asp-action="IndexFilter" asp-route-sortOrder="@ViewData["RatingSortParm"]">Rating</a>
+            </th>
+            <th>
+                Genre
+            </th>
+
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    <img src="~/images/@item.ImagePath" class="rounded float-left" width="40" height="40" alt="...">
+                </td>
+                <td>
+                    @Html.ActionLink(item.Title, "Details", "Movie", new { id = item.ID }, null)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.ReleaseDate)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Director)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Gross)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Rating)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Genre.Name)
+                </td>
+
+                <td>
+                    <a asp-action="Edit" asp-route-id="@item.ID">Edit</a> |
+                    <a asp-action="Delete" asp-route-id="@item.ID">Delete</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+@{
+    var prevDisabled = !Model.HasPreviousPage ? "disabled" : "";
+    var nextDisabled = !Model.HasNextPage ? "disabled" : "";
+}
+
+<a asp-action="IndexFilter"
+   asp-route-sortOrder="@ViewData["CurrentSort"]"
+   asp-route-pageNumber="@(Model.PageIndex - 1)"
+   asp-route-currentFilter="@ViewData["CurrentFilter"]"
+   class="btn btn-default @prevDisabled">
+    Previous
+</a>
+<a asp-action="IndexFilter"
+   asp-route-sortOrder="@ViewData["CurrentSort"]"
+   asp-route-pageNumber="@(Model.PageIndex + 1)"
+   asp-route-currentFilter="@ViewData["CurrentFilter"]"
+   class="btn btn-default @nextDisabled">
+    Next
+</a>

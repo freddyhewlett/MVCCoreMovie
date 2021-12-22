@@ -1,12 +1,13 @@
 {
   "version": 2,
-  "dgSpecHash": "0NP6B+h+o5/DpUG2E1fOXAiQj1MlDzJmpBczAhc8ILPIkLFMD8qTSFcKCe0gvJJzLoC9KBe4ISEcIs7UpsBpTQ==",
+  "dgSpecHash": "NPRIIP7V3XV9fzPlG+C0LxAwES645HShqSghMWx1hz786xAN11f1c6XCt+n6YdVFYsWqC3cUNOo6QVJkmc1Ghg==",
   "success": true,
   "projectFilePath": "D:\\Workplace\\MVCCoreMovie\\WebUI\\WebUI.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\Freddy\\.nuget\\packages\\automapper\\10.1.1\\automapper.10.1.1.nupkg.sha512",
     "C:\\Users\\Freddy\\.nuget\\packages\\automapper.extensions.microsoft.dependencyinjection\\8.1.1\\automapper.extensions.microsoft.dependencyinjection.8.1.1.nupkg.sha512",
     "C:\\Users\\Freddy\\.nuget\\packages\\humanizer.core\\2.8.26\\humanizer.core.2.8.26.nupkg.sha512",
+    "C:\\Users\\Freddy\\.nuget\\packages\\jetbrains.annotations\\2021.1.0\\jetbrains.annotations.2021.1.0.nupkg.sha512",
     "C:\\Users\\Freddy\\.nuget\\packages\\microsoft.aspnet.mvc\\5.0.2\\microsoft.aspnet.mvc.5.0.2.nupkg.sha512",
     "C:\\Users\\Freddy\\.nuget\\packages\\microsoft.aspnet.razor\\3.0.0\\microsoft.aspnet.razor.3.0.0.nupkg.sha512",
     "C:\\Users\\Freddy\\.nuget\\packages\\microsoft.aspnet.webpages\\3.0.0\\microsoft.aspnet.webpages.3.0.0.nupkg.sha512",
@@ -145,7 +146,9 @@
     "C:\\Users\\Freddy\\.nuget\\packages\\system.xml.readerwriter\\4.3.0\\system.xml.readerwriter.4.3.0.nupkg.sha512",
     "C:\\Users\\Freddy\\.nuget\\packages\\system.xml.xdocument\\4.3.0\\system.xml.xdocument.4.3.0.nupkg.sha512",
     "C:\\Users\\Freddy\\.nuget\\packages\\system.xml.xmldocument\\4.3.0\\system.xml.xmldocument.4.3.0.nupkg.sha512",
-    "C:\\Users\\Freddy\\.nuget\\packages\\system.xml.xmlserializer\\4.3.0\\system.xml.xmlserializer.4.3.0.nupkg.sha512"
+    "C:\\Users\\Freddy\\.nuget\\packages\\system.xml.xmlserializer\\4.3.0\\system.xml.xmlserializer.4.3.0.nupkg.sha512",
+    "C:\\Users\\Freddy\\.nuget\\packages\\x.pagedlist\\8.1.0\\x.pagedlist.8.1.0.nupkg.sha512",
+    "C:\\Users\\Freddy\\.nuget\\packages\\x.pagedlist.mvc.core\\8.1.0\\x.pagedlist.mvc.core.8.1.0.nupkg.sha512"
   ],
   "logs": [
     {

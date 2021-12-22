@@ -40,7 +40,9 @@ namespace WebUI.Models
 
         [Display(Name ="Genero")]
         public Guid GenreID { get; set; }
-        public GenreViewModel Genre { get; set; }  
+        public GenreViewModel Genre { get; set; } 
+        
+        [Display(Name ="Picture")]
         public string ImagePath { get; set; }        
         public IFormFile ImageUpload { get; set; }        
         

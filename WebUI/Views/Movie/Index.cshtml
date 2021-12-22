@@ -8,27 +8,12 @@
 <h1>Index</h1>
 
 <p>
-    <a asp-action="Create">Create New</a>
+    <a asp-action="Create">Create New</a> | 
+    <a asp-action="IndexFilter">Filter Movies</a>
 </p>
 
-@using (Html.BeginForm())
-{
-    <p>
-        <script type="text/javascript">
-            $(document).ready(function () {
-                $('#searchString').autocomplete({
-                    source: '@Url.Action("MovieFilter")'
-                });
-            });
-        </script>
-        Find by name or director: @Html.TextBox("searchString")
-        <input type="submit" value="Search" />
-        Select Genre: @Html.DropDownList("SelectedGenre", "All")
-        <input type="submit" value="Filter" />
 
-        @Html.ActionLink("Rating", "index", new { sortOrder = ViewBag.RatingSortParm })
-    </p>
-}
+
 
 <table class="table">
     <thead>
@@ -61,35 +46,34 @@
     <tbody>
         @foreach (var item in Model)
         {
-            <tr>
-                <td>
-                    <img src="~/images/@item.ImagePath" class="rounded float-left" width="40" height="40" alt="...">
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Title)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.ReleaseDate)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Director)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Gross)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Rating)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Genre.Name)
-                </td>
+        <tr>
+            <td>
+                <img src="~/images/@item.ImagePath" class="rounded float-left" width="40" height="40" alt="...">
+            </td>
+            <td>
+                @Html.ActionLink(item.Title, "Details", "Movie", new { id = item.ID }, null)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ReleaseDate)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Director)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Gross)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Rating)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Genre.Name)
+            </td>
 
-                <td>
-                    <a asp-action="Edit" asp-route-id="@item.ID">Edit</a> |
-                    <a asp-action="Details" asp-route-id="@item.ID">Details</a> |
-                    <a asp-action="Delete" asp-route-id="@item.ID">Delete</a>
-                </td>
-            </tr>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.ID">Edit</a> | 
+                <a asp-action="Delete" asp-route-id="@item.ID">Delete</a>
+            </td>
+        </tr>
         }
     </tbody>
 </table>

@@ -26,6 +26,39 @@ namespace Infrastructure.Repository
             return await _context.Movies.Include(x => x.Genre).Where(predicate).FirstOrDefaultAsync();
         }
 
+        public async Task<List<Movie>> SortFilter(string sortOrder)
+        {
+            var movies = from m in _context.Movies select m;
+            switch (sortOrder)
+            {
+                case "title_desc":
+                    movies = movies.OrderByDescending(m => m.Title);
+                    break;
+                case "Date":
+                    movies = movies.OrderBy(m => m.ReleaseDate);
+                    break;
+                case "date_desc":
+                    movies = movies.OrderByDescending(m => m.ReleaseDate);
+                    break;
+                case "Gross":
+                    movies = movies.OrderBy(m => m.Gross);
+                    break;
+                case "gross_desc":
+                    movies = movies.OrderByDescending(m => m.Gross);
+                    break;
+                case "Rating":
+                    movies = movies.OrderBy(m => m.Rating);
+                    break;
+                case "rate_desc":
+                    movies = movies.OrderByDescending(m => m.Rating);
+                    break;
+                default:
+                    movies = movies.OrderBy(m => m.Title);
+                    break;
+            }
+            return await movies.AsNoTracking().ToListAsync();
+        }
+
         public async Task Insert(Movie movie)
         {
             await _context.AddAsync(movie);
@@ -85,10 +118,9 @@ namespace Infrastructure.Repository
 
         public async Task<string> FindImagePath(Guid id)
         {
-            var movie = await _context.Movies.AsNoTracking().ToListAsync();
-            var movieScope = movie.Find(x => x.Id == id);
-            //var movie = await _context.Movies.FindAsync(id);
-            var path = movieScope.ImagePath;
+            var movieList = await _context.Movies.AsNoTracking().ToListAsync();
+            var movie = movieList.Find(x => x.Id == id);
+            var path = movie.ImagePath;
             return path;
         }
     }
